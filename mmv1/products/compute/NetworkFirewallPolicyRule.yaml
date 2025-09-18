@@ -40,6 +40,7 @@ timeouts:
   delete_minutes: 20
 custom_code:
   constants: 'templates/terraform/constants/network_firewall_policy_rule.go.tmpl'
+  update_encoder: 'templates/terraform/update_encoder/test.go.tmpl'
 async:
   actions: ['create', 'delete', 'update']
   type: 'OpAsync'
@@ -133,15 +134,33 @@ properties:
         item_type:
           type: String
       - name: 'srcNetworkScope'
+        conflicts:
+          - match.0.src_network_type
         type: Enum
         description: |
           Network scope of the traffic source.
         min_version: beta
+        default_from_api: true
         enum_values:
+          - 'UNSPECIFIED'
           - 'INTERNET'
           - 'INTRA_VPC'
           - 'NON_INTERNET'
           - 'VPC_NETWORKS'
+      - name: 'srcNetworkType'
+        conflicts:
+          - match.0.src_network_scope
+        type: Enum
+        default_from_api: true
+        description: |
+          Network scope of the traffic source.
+        min_version: beta
+        enum_values:
+        - 'UNSPECIFIED'
+        - 'INTERNET'
+        - 'INTRA_VPC'
+        - 'NON_INTERNET'
+        - 'VPC_NETWORKS'
       - name: 'srcNetworks'
         type: Array
         description: |
@@ -155,6 +174,7 @@ properties:
           Network scope of the traffic destination.
         min_version: beta
         enum_values:
+          - 'UNSPECIFIED'
           - 'INTERNET'
           - 'INTRA_VPC'
           - 'NON_INTERNET'

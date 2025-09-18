@@ -188,6 +188,17 @@ properties:
                 - 'INTRA_VPC'
                 - 'NON_INTERNET'
                 - 'VPC_NETWORKS'
+            - name: 'srcNetworkType'
+              type: Enum
+              default_from_api: true
+              description: |
+                Network type of the traffic source.
+              min_version: beta
+              enum_values:
+              - 'INTERNET'
+              - 'INTRA_VPC'
+              - 'NON_INTERNET'
+              - 'VPC_NETWORKS'
             - name: 'srcNetworks'
               type: Array
               description: |

@@ -10,10 +10,10 @@ resource "google_compute_firewall_policy" "default" {
   description = "Firewall policy"
 }
 
-resource "google_compute_firewall_policy_rule" "{{$.PrimaryResourceId}}" {
+resource "google_compute_firewall_policy_rule" "src-{{$.PrimaryResourceId}}" {
   firewall_policy = google_compute_firewall_policy.default.name
   description     = "Firewall policy rule with network context"
-  priority        = 9000
+  priority        = 8000
   action          = "allow"
   direction       = "INGRESS"
   disabled        = false
@@ -30,6 +30,24 @@ resource "google_compute_firewall_policy_rule" "{{$.PrimaryResourceId}}" {
     layer4_configs {
       ip_protocol = "udp"
       ports       = [22]
+    }
+  }
+}
+
+resource "google_compute_firewall_policy_rule" "dest-{{$.PrimaryResourceId}}" {
+  firewall_policy = google_compute_firewall_policy.default.name
+  description     = "Firewall policy rule with network context"
+  priority        = 9000
+  action          = "allow"
+  direction       = "INGRESS"
+  disabled        = false
+
+  match {
+    dest_ip_ranges     = ["11.100.0.1/32"]
+    src_network_context = "NON_INTERNET"
+
+    layer4_configs {
+      ip_protocol = "tcp"
     }
   }
 }

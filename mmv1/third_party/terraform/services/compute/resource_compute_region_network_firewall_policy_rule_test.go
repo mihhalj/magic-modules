@@ -395,7 +395,6 @@ resource "google_compute_region_network_firewall_policy_rule" "fw_policy_rule1" 
     dest_region_codes         = []
     dest_threat_intelligences = []
     dest_address_groups       = [google_network_security_address_group.address_group.id]
-    dest_network_context      = "NON_INTERNET"
   }
 }
 `, context)
@@ -463,7 +462,6 @@ resource "google_compute_region_network_firewall_policy_rule" "fw_policy_rule1" 
     dest_threat_intelligences = ["iplist-known-malicious-ips"]
     src_address_groups        = []
     dest_address_groups       = [google_network_security_address_group.address_group.id]
-    dest_network_context      = "INTERNET"
   }
 }
 `, context)

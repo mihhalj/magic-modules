@@ -10,7 +10,7 @@ resource "google_compute_firewall_policy" "default" {
   description = "Firewall policy"
 }
 
-resource "google_compute_firewall_policy_rule" "src-{{$.PrimaryResourceId}}" {
+resource "google_compute_firewall_policy_rule" "{{$.PrimaryResourceId}}" {
   firewall_policy = google_compute_firewall_policy.default.name
   description     = "Firewall policy rule with network context"
   priority        = 8000
@@ -34,17 +34,17 @@ resource "google_compute_firewall_policy_rule" "src-{{$.PrimaryResourceId}}" {
   }
 }
 
-resource "google_compute_firewall_policy_rule" "dest-{{$.PrimaryResourceId}}" {
+resource "google_compute_firewall_policy_rule" "egress-{{$.PrimaryResourceId}}" {
   firewall_policy = google_compute_firewall_policy.default.name
   description     = "Firewall policy rule with network context"
   priority        = 9000
   action          = "allow"
-  direction       = "INGRESS"
+  direction       = "EGRESS"
   disabled        = false
 
   match {
     dest_ip_ranges     = ["11.100.0.1/32"]
-    src_network_context = "NON_INTERNET"
+    dest_network_context = "NON_INTERNET"
 
     layer4_configs {
       ip_protocol = "tcp"

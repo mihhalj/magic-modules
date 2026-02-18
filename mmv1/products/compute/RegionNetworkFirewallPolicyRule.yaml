@@ -170,7 +170,9 @@ properties:
         description: |
           Network scope of the traffic source.
         min_version: beta
+        default_from_api: true
         enum_values:
+          - 'UNSPECIFIED'
           - 'INTERNET'
           - 'INTRA_VPC'
           - 'NON_INTERNET'
@@ -201,7 +203,9 @@ properties:
         description: |
           Network scope of the traffic destination.
         min_version: beta
+        default_from_api: true
         enum_values:
+          - 'UNSPECIFIED'
           - 'INTERNET'
           - 'INTRA_VPC'
           - 'NON_INTERNET'

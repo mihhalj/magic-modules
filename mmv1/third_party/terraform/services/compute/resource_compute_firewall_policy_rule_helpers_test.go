@@ -12,7 +12,8 @@ type testCase struct {
 	expectObj map[string]interface{}
 	expectErr bool
 }
-var cases = map[string]testCase {
+
+var cases = map[string]testCase{
 	"no_match": {
 		obj: map[string]interface{}{
 			"action": "allow",
@@ -27,23 +28,23 @@ var cases = map[string]testCase {
 		obj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"other_field":       123,
+				"other_field": 123,
 			},
 		},
 		oldMatch: []any{
 			map[string]any{
-				"other_field":       456,
+				"other_field": 456,
 			},
 		},
 		newMatch: []any{
 			map[string]any{
-				"other_field":       789,
+				"other_field": 789,
 			},
 		},
 		expectObj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"other_field":       123,
+				"other_field": 123,
 			},
 		},
 	},
@@ -51,31 +52,31 @@ var cases = map[string]testCase {
 		obj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "INTERNET",
+				"src_network_scope":  "INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       123,
+				"other_field":        123,
 			},
 		},
 		oldMatch: []any{
 			map[string]any{
-				"src_network_scope": "INTERNET",
+				"src_network_scope":  "INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       456,
+				"other_field":        456,
 			},
 		},
 		newMatch: []any{
 			map[string]any{
-				"src_network_scope": "INTERNET",
+				"src_network_scope":  "INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       789,
+				"other_field":        789,
 			},
 		},
 		expectObj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "INTERNET",
+				"src_network_scope":  "INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       123,
+				"other_field":        123,
 			},
 		},
 	},
@@ -83,31 +84,31 @@ var cases = map[string]testCase {
 		obj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "INTERNET",
+				"src_network_scope":  "INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       123,
+				"other_field":        123,
 			},
 		},
 		oldMatch: []any{
 			map[string]any{
-				"src_network_scope": "NON_INTERNET",
+				"src_network_scope":  "NON_INTERNET",
 				"dest_network_scope": "INTERNET",
-				"other_field":       456,
+				"other_field":        456,
 			},
 		},
 		newMatch: []any{
 			map[string]any{
-				"src_network_scope": "INTERNET",
+				"src_network_scope":  "INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       789,
+				"other_field":        789,
 			},
 		},
 		expectObj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "INTERNET",
+				"src_network_scope":  "INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       123,
+				"other_field":        123,
 			},
 		},
 	},
@@ -115,39 +116,39 @@ var cases = map[string]testCase {
 		obj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTRA_VPC",
-				"other_field":       123,
+				"other_field":          123,
 			},
 		},
 		oldMatch: []any{
 			map[string]any{
-				"src_network_scope": "INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTRA_VPC",
-				"other_field":       456,
+				"other_field":          456,
 			},
 		},
 		newMatch: []any{
 			map[string]any{
-				"src_network_scope": "INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTRA_VPC",
-				"other_field":       789,
+				"other_field":          789,
 			},
 		},
 		expectObj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTRA_VPC",
-				"other_field":       123,
+				"other_field":          123,
 			},
 		},
 	},
@@ -155,38 +156,38 @@ var cases = map[string]testCase {
 		obj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "NON_INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "NON_INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTERNET",
-				"other_field":       123,
+				"other_field":          123,
 			},
 		},
 		oldMatch: []any{
 			map[string]any{
-				"src_network_scope": "INTRA_VPC",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "NON_INTERNET",
+				"src_network_scope":    "INTRA_VPC",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "NON_INTERNET",
 				"dest_network_context": "INTERNET",
-				"other_field":       456,
+				"other_field":          456,
 			},
 		},
 		newMatch: []any{
 			map[string]any{
-				"src_network_scope": "NON_INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "NON_INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTERNET",
-				"other_field":       789,
+				"other_field":          789,
 			},
 		},
 		expectObj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
 				// scope changed - context field removed from obj
-				"src_network_scope": "NON_INTERNET",
+				"src_network_scope":  "NON_INTERNET",
 				"dest_network_scope": "INTRA_VPC",
-				"other_field":       123,
+				"other_field":        123,
 			},
 		},
 	},
@@ -195,29 +196,29 @@ var cases = map[string]testCase {
 		obj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "NON_INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "NON_INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTERNET",
-				"other_field":       123,
+				"other_field":          123,
 			},
 		},
 		oldMatch: []any{
 			map[string]any{
-				"src_network_scope": "INTERNET",
-				"src_network_context": "INTRA_VPC",
-				"dest_network_scope": "NON_INTERNET",
+				"src_network_scope":    "INTERNET",
+				"src_network_context":  "INTRA_VPC",
+				"dest_network_scope":   "NON_INTERNET",
 				"dest_network_context": "NON_INTERNET",
-				"other_field":       456,
+				"other_field":          456,
 			},
 		},
 		newMatch: []any{
 			map[string]any{
-				"src_network_scope": "NON_INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "NON_INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTERNET",
-				"other_field":       789,
+				"other_field":          789,
 			},
 		},
 	},
@@ -225,38 +226,38 @@ var cases = map[string]testCase {
 		obj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
-				"src_network_scope": "NON_INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "NON_INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTERNET",
-				"other_field":       123,
+				"other_field":          123,
 			},
 		},
 		oldMatch: []any{
 			map[string]any{
-				"src_network_scope": "NON_INTERNET",
-				"src_network_context": "INTRA_VPC",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "NON_INTERNET",
+				"src_network_context":  "INTRA_VPC",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "NON_INTERNET",
-				"other_field":       456,
+				"other_field":          456,
 			},
 		},
 		newMatch: []any{
 			map[string]any{
-				"src_network_scope": "NON_INTERNET",
-				"src_network_context": "INTERNET",
-				"dest_network_scope": "INTRA_VPC",
+				"src_network_scope":    "NON_INTERNET",
+				"src_network_context":  "INTERNET",
+				"dest_network_scope":   "INTRA_VPC",
 				"dest_network_context": "INTERNET",
-				"other_field":       789,
+				"other_field":          789,
 			},
 		},
 		expectObj: map[string]interface{}{
 			"action": "allow",
 			"match": map[string]any{
 				// context changed - scope field removed from obj
-				"src_network_context": "INTERNET",
+				"src_network_context":  "INTERNET",
 				"dest_network_context": "INTERNET",
-				"other_field":       123,
+				"other_field":          123,
 			},
 		},
 	},

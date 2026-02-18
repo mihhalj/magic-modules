@@ -144,10 +144,12 @@ properties:
           type: String
       - name: 'srcNetworkScope'
         type: Enum
+        default_from_api: true
         description: |
           Network scope of the traffic source.
         min_version: beta
         enum_values:
+          - 'UNSPECIFIED'
           - 'INTERNET'
           - 'INTRA_VPC'
           - 'NON_INTERNET'
@@ -175,10 +177,12 @@ properties:
           type: String
       - name: 'destNetworkScope'
         type: Enum
+        default_from_api: true
         description: |
           Network scope of the traffic destination.
         min_version: beta
         enum_values:
+          - 'UNSPECIFIED'
           - 'INTERNET'
           - 'INTRA_VPC'
           - 'NON_INTERNET'
